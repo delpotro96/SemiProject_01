@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.demo.dao.BoardDAO">
+
+<insert id="postBoard" parameterType="boardVO">
+	insert into board(title, content, name) values(#{title},#{content},#{name})
+</insert>
+<select id="selectAllBoard" resultType="boardVO">
+	select *from board order by bNo desc
+</select>
+
+<select id="selectPageBoard" resultType="boardVO">
+	select * from (
+   select bno, title, content, name, date  
+   from board order by bno desc) as T1 LIMIT #{skip},#{amount}
+</select>
+
+</mapper>

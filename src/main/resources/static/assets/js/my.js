@@ -12,6 +12,8 @@ $(document).ready(function(){
 			if(data.id){				
 				$("#loginDiv").html(data.id+" 행님 하이요 <button id='logoutBtn'>logout</button>");
 				$.cookie("id",data.id);
+			}else{
+				alert("입력한 정보를 확인하세요?")
 			}
 		});
 	})
