@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,62 +53,42 @@
     </div>
   </div>
 </nav>
-<a href="/board/enroll">글쓰기</a>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">번호</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성자</th>
-      <th scope="col">작성일</th>
-    </tr>
-  </thead>
-  <c:forEach items="${list}" var="list">
-            <tr class="table-primary">
-                <td><c:out value="${list.bno}"/></td>
-                <td>
-                	<a class="move" href='<c:out value="${list.bno}"/>'>
-                        <c:out value="${list.title}"/>
-               		 </a>
-                	</td>
-                <td><c:out value="${list.writer}"/></td>
-                <td><c:out value="${list.regdate}"/></td>
-            </tr>
-        </c:forEach>
-</table>
-<form id="moveForm" method="get"></form>
+<a href="/board/list">글 목록</a>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">게시판 번호</label>
+      <input name = "bno" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value='<c:out value="${pageInfo.bno}"/>' readonly="readonly">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">게시판 제목</label>
+      <input name = "title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value='<c:out value="${pageInfo.title}"/>' readonly="readonly">
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea" class="form-label mt-4">게시판 내용</label>
+      <textarea name="content" class="form-control" id="exampleTextarea" rows="3" readonly="readonly"><c:out value="${pageInfo.content}"/></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">게시판 작성자</label>
+      <input name="writer" type="text" class="form-control" id="exampleInputPassword1" readonly="readonly" value='<c:out value="${pageInfo.writer}"/>'>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">게시판 등록일</label>
+      <input name="regdate" type="text" class="form-control" id="exampleInputPassword1" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regdate}"/>'>
+    </div>
 
 <script>
-$(document).ready(function(){
-    
-    let result = '<c:out value="${result}"/>';
-    
-    checkAlert(result);
-    
-    function checkAlert(result){
-        
-        if(result === ''){
-            return;
-        }
-        
-        if(result === "enrol success"){
-            alert("등록이 완료되었습니다.");
-        }
-        
-    }    
-    
-});
-	let moveForm = $("#moveForm");
+	let form = $("#infoForm");
 	
-	$(".move").on("click", function(e){
-	    e.preventDefault();
-	    
-	    moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
-	    moveForm.attr("action", "/board/get");
-	    moveForm.submit();
+	$("#list_btn").on("click", function(e){
+		form.find("#bno").remove();
+		form.attr("action", "/board/list");
+		form.submit();
 	});
 	
-	
+	$("#modify_btn").on("click", function(e){
+		form.attr("action", "/board/modify");
+		form.submit();
+	});	
 </script>
 </body>
 </html>

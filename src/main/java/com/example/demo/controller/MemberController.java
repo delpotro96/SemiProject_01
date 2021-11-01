@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,12 +15,11 @@ import com.example.demo.vo.MemberVO;
 
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	MemberService memberService;
 	
-	
-	@RequestMapping("memberInsert")
+	@RequestMapping("/memberInsert")
 	@ResponseBody
 	public String memberInsert(MemberVO memberVO) {
 		System.out.println("Try SignUp");
@@ -35,10 +35,9 @@ public class MemberController {
 			return "<script>alert('환영합니다'); window.close();</script>";
 			}catch(DataAccessException e) {
 				return "에러 발생";
-			}
-		
-		
+			}		
 	}
+	
 	@RequestMapping("login")
 	@ResponseBody
 	public String login(HttpSession session, MemberVO memberVO) {
@@ -66,6 +65,7 @@ public class MemberController {
 		
 		return jo.toJSONString();
 	}
+	
 	@RequestMapping("logout")
 	@ResponseBody
 	public String logout(HttpSession session) {
@@ -79,4 +79,7 @@ public class MemberController {
 		}
 		return jo.toJSONString();
 	}
+	
+	
+	
 }

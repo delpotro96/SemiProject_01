@@ -4,35 +4,46 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private int bNo;
-	private String title, content, name;
-	private Date date;
+	private int bno;
+	private String title, content, writer;
+	private Date regdate;
 
 	
+	
+	
+	public BoardVO(int bno, String title, String content, String writer, Date regdate) {
+		super();
+		setBno(bno);
+		setTitle(title);
+		setContent(content);
+		setWriter(writer);
+		setRegdate(regdate);
+		
+	}
+
+
+
+
 	public BoardVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public BoardVO(int bNo, String title, String content, String name, Date date) {
-		setbNo(bNo);
-		setTitle(title);
-		setContent(content);
-		setName(name);
-		setDate(date);
-		
+
+
+	public int getBno() {
+		return bno;
 	}
 
 
-	public int getbNo() {
-		return bNo;
+
+
+	public void setBno(int bno) {
+		this.bno = bno;
 	}
 
 
-	public void setbNo(int bNo) {
-		this.bNo = bNo;
-	}
 
 
 	public String getTitle() {
@@ -40,14 +51,13 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setTitle(String title) {
-		if(title!=null||!title.equals("")) {
-			this.title = title;
-		}else {
-			System.out.println("제목을 작성해주세요");
-		}
-		
+		this.title = title;
 	}
+
+
 
 
 	public String getContent() {
@@ -55,44 +65,54 @@ public class BoardVO {
 	}
 
 
+
+
 	public void setContent(String content) {
-		if(content!=null||!content.equals("")) {
-			this.content = content;
-		}else {		
-			System.out.println("내용을 작성해주세요");
-		}
+		this.content = content;
 	}
 
 
-	public String getName() {
-		return name;
+
+
+	public String getWriter() {
+		return writer;
 	}
 
 
-	public void setName(String name) {
-		if(name!=null||!name.equals("")) {
-			this.name = name;
-		}else {
-			System.out.println("작성자 명을 작성해주세요");
-		}
+
+
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 
-	public Date getDate() {
-		return date;
+
+
+	public Date getRegdate() {
+		return regdate;
 	}
 
 
-	public void setDate(Date date) {
-		this.date = date;
+
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
+
+
 
 
 	@Override
 	public String toString() {
-		return "BoardVO [bNo=" + bNo + ", title=" + title + ", content=" + content + ", name=" + name + ", date=" + date
-				+ "]";
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + "]";
 	}
-	
-	
+
+
+
+
+
+
+
 }
+

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,62 +51,27 @@
     </div>
   </div>
 </nav>
-<a href="/board/enroll">글쓰기</a>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">번호</th>
-      <th scope="col">제목</th>
-      <th scope="col">작성자</th>
-      <th scope="col">작성일</th>
-    </tr>
-  </thead>
-  <c:forEach items="${list}" var="list">
-            <tr class="table-primary">
-                <td><c:out value="${list.bno}"/></td>
-                <td>
-                	<a class="move" href='<c:out value="${list.bno}"/>'>
-                        <c:out value="${list.title}"/>
-               		 </a>
-                	</td>
-                <td><c:out value="${list.writer}"/></td>
-                <td><c:out value="${list.regdate}"/></td>
-            </tr>
-        </c:forEach>
-</table>
-<form id="moveForm" method="get"></form>
+<a href="/board/list">글 목록</a>
 
-<script>
-$(document).ready(function(){
-    
-    let result = '<c:out value="${result}"/>';
-    
-    checkAlert(result);
-    
-    function checkAlert(result){
-        
-        if(result === ''){
-            return;
-        }
-        
-        if(result === "enrol success"){
-            alert("등록이 완료되었습니다.");
-        }
-        
-    }    
-    
-});
-	let moveForm = $("#moveForm");
-	
-	$(".move").on("click", function(e){
-	    e.preventDefault();
-	    
-	    moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
-	    moveForm.attr("action", "/board/get");
-	    moveForm.submit();
-	});
-	
-	
-</script>
+<form action="/board/enroll" method="post">
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Title</label>
+      <input name = "title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea" class="form-label mt-4">textarea</label>
+      <textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">writer</label>
+      <input name="writer" type="text" class="form-control" id="exampleInputPassword1" placeholder="writer">
+    </div>
+    <div class="form-group">
+      <label for="formFile" class="form-label mt-4">Default file input example</label>
+      <input class="form-control" type="file" id="formFile">
+    </div>
+    <button class="btn btn-outline-primary">등록</button>
+</form>
+
 </body>
 </html>

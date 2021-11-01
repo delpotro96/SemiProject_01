@@ -2,21 +2,22 @@ package com.example.demo.vo;
 
 public class MemberVO {
 
-	private String email, id, pw;
+	private String email,id,pw;
 
 	
 	
-	public MemberVO(String email, String id, String pw) {
-		setEmail(email);
-		setId(id);
-		setPw(pw);
+	public MemberVO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 
 
-	public MemberVO() {
+	public MemberVO(String email, String id, String pw) {
 		super();
-		// TODO Auto-generated constructor stub
+		setEmail(email);
+		setId(id);
+		setPw(pw);
 	}
 
 
@@ -57,10 +58,7 @@ public class MemberVO {
 
 
 
-	@Override
-	public String toString() {
-		return "MemberVO [email=" + email + ", id=" + id + ", pw=" + pw + "]";
-	}	
 	
-
+	
+	
 }

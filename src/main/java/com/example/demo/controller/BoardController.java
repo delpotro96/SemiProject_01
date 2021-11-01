@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,44 +15,47 @@ import com.example.demo.vo.BoardVO;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-	
-	@Autowired
-	BoardService boardService;
 
-	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
+	@Autowired
+	private BoardService boardService;	
 	
-	//게시판
-//	@GetMapping("/list")
-//	public void boardList(Model model) {
-//		log.info("게시판 목록 진입");
-//		model.addAttribute("list", boardService.selectAllBoard());
-//	}
-	//페이징
+	/* 게시판 목록 all
+	 * 
 	@GetMapping("/list")
-	public void boardPagingList(Model model, Criteria cri) {
-		log.info("게시판 페이징 진입");
-		model.addAttribute("list", boardService.selectPageBoard(cri));
+	public void boardListGet(Model model) {
+		System.out.println("게시판 목록 진입");
+		model.addAttribute("list", boardService.getList());
+	}
+	*/
+	@GetMapping("/list")
+	public void boardListGet(Model model, Criteria cri) {
+		System.out.println("게시판 목록 진입");
+		model.addAttribute("list", boardService.getListPaging(cri));
 	}
 	
-	@GetMapping("/post")
-	public void boardPost() {
-		log.info("게시판 등록 페이지 진입");
+	@GetMapping("enroll")
+	public void boardEnrollGet() {
+		System.out.println("게시판 등록 진입");
 	}
 	
-	//RedirectAttribute를 사용하여 redirect 시 alert가 뜨도록
-	@PostMapping("/post")
-	public String boardPostWithPost(BoardVO boardVO, RedirectAttributes rttr) {
-		log.info("BoardVO : " + boardVO);
-		
+	/* 게시판 등록 */
+	@PostMapping("/enroll")
+	public String boardEnrollPost(BoardVO boardVO, RedirectAttributes rttr) {
+		System.out.println("게시판 등록");
 		if(boardVO.getTitle()!=null&&!boardVO.getTitle().equals("")&&
 				boardVO.getContent()!=null&&!boardVO.getContent().equals("")&&
-				boardVO.getName()!=null&&!boardVO.getName().equals("")) {
-			rttr.addFlashAttribute("result", "post success");		
-			boardService.postBoard(boardVO);
+				boardVO.getWriter()!=null&&!boardVO.getWriter().equals("")) {
+			rttr.addFlashAttribute("result", "enrol success");		
+			boardService.enroll(boardVO);
 			return "redirect:/board/list";
 		}else {
-			rttr.addFlashAttribute("result", "post fail");
+			rttr.addFlashAttribute("result", "enrol fail");
 			return "redirect:/board/list";
 		}
+	}
+	/* 게시판 조회 */
+	@GetMapping("/get")
+	public void boardGetPageGET(int bno, Model model) {
+		model.addAttribute("pageInfo", boardService.getPage(bno));
 	}
 }
