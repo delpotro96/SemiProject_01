@@ -20,4 +20,6 @@ public interface BoardDAO {
 	
 	/* 페이징 게시판 목록 */
 	public List<BoardVO> getListPaging(Criteria cri);
+
+	public int getTotal();
 }

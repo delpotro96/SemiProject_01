@@ -7,7 +7,7 @@
 	
 	 <!-- 게시판 등록 -->
     <insert id="enroll" parameterType="boardVO">        
-        insert into board(title, content, writer) values (#{title}, #{content}, #{writer})
+        insert into board(title, content, writer, youtube) values (#{title}, #{content}, #{writer}, #{youtube})
     </insert>
     <!--  게시판 목록 -->
 	<select id="getList" resultType="boardVO">
@@ -22,6 +22,9 @@
     
         SELECT *FROM board ORDER BY bno DESC LIMIT #{skip},#{amount}
     
+    </select>
+    <select id="getTotal" resultType="int">
+    	select count(*) from board
     </select>
 
 </mapper>

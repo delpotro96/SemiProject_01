@@ -9,13 +9,45 @@
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style type="text/css">
+.pageInfo{
+      list-style : none;
+      display: inline-block;
+    margin: 50px 0 0 100px;      
+  }
+  .pageInfo li{
+      float: left;
+    font-size: 20px;
+    margin-left: 18px;
+    padding: 7px;
+    font-weight: 500;
+  }
+ a:link {color:black; text-decoration: none;}
+ a:visited {color:black; text-decoration: none;}
+ a:hover {color:black; text-decoration: underline;}
+ .active{
+      background-color: #cdd5ec;
+  }
 
+#enrolBtn{
+	left:20%;
+}
+.table-light{
+	height:70px;
+	padding-left:10px;
+}
+table, td, th {
+  border : 1px solid #e4e9ee;
+  border-collapse : collapse;
+  padding-left:10px;
+};
+</style>
 
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Daily Tennis</a>
+    <a class="navbar-brand" href="../../../">Daily Tennis</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,8 +84,8 @@
     </div>
   </div>
 </nav>
-<a href="/board/enroll">글쓰기</a>
-<table class="table table-hover">
+
+<table class="table table-hover" border='1'>
   <thead>
     <tr>
       <th scope="col">번호</th>
@@ -63,7 +95,7 @@
     </tr>
   </thead>
   <c:forEach items="${list}" var="list">
-            <tr class="table-primary">
+            <tr class="table-light">
                 <td><c:out value="${list.bno}"/></td>
                 <td>
                 	<a class="move" href='<c:out value="${list.bno}"/>'>
@@ -75,7 +107,29 @@
             </tr>
         </c:forEach>
 </table>
-<form id="moveForm" method="get"></form>
+<div class="pageInfo_wrap" >
+		<div class="pageInfo_area">
+			<ul id="pageInfo" class="pageInfo">
+
+				<!-- 각 번호 페이지 버튼 -->
+                <c:forEach var="num" begin="${pageMakerDTO.startPage}" end="${pageMakerDTO.endPage}">
+                    <li class="pageInfo_btn ${pageMakerDTO.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
+                </c:forEach>
+
+
+						
+
+			</ul>
+		</div>
+	</div>
+	<form id="moveForm" method="get">	
+		<input type="hidden" name="pageNum" value="${pageMakerDTO.cri.pageNum }">
+		<input type="hidden" name="amount" value="${pageMakerDTO.cri.amount }">
+	</form>
+	<button id="enrolBtn" type="button" onclick="location.href='/board/enroll';"  class="btn btn-outline-dark">글 작성</button>
+	
+
+
 
 <script>
 $(document).ready(function(){
@@ -106,6 +160,15 @@ $(document).ready(function(){
 	    moveForm.attr("action", "/board/get");
 	    moveForm.submit();
 	});
+	
+	$(".pageInfo a").on("click", function(e){
+		 
+        e.preventDefault();
+        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+        moveForm.attr("action", "/board/list");
+        moveForm.submit();
+        
+    });
 	
 	
 </script>

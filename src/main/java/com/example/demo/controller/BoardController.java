@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.paging.Criteria;
+import com.example.demo.paging.PageMakerDTO;
 import com.example.demo.service.BoardService;
 import com.example.demo.vo.BoardVO;
 
@@ -31,6 +32,9 @@ public class BoardController {
 	public void boardListGet(Model model, Criteria cri) {
 		System.out.println("게시판 목록 진입");
 		model.addAttribute("list", boardService.getListPaging(cri));
+		int total = boardService.getTotal();
+		PageMakerDTO pageMakerDTO = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMakerDTO", pageMakerDTO);
 	}
 	
 	@GetMapping("enroll")

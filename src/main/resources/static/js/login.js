@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	const id=$.cookie("id");	
 	if(id){
-		$("#loginDiv").html(id+" 행님 하이요 <button id='logoutBtn'>logout</button>")
+		$("#loginSpan").html(id+" 님 안녕하세요 <button id='logoutBtn'>logout</button>")
 	}
 	$("#loginBtn").click(function(){
 		const id = $("#id").val();
@@ -10,10 +10,10 @@ $(document).ready(function(){
 		$.post('../../login', {id,pw}, function(data){
 			data=JSON.parse(data);
 			if(data.id){				
-				$("#loginDiv").html(data.id+" 행님 하이요 <button id='logoutBtn'>logout</button>");
+				$("#loginSpan").html(data.id+" 님 안녕하세요 <button id='logoutBtn'>logout</button>");
 				$.cookie("id",data.id);
 			}else{
-				alert("입력한 정보를 확인하세요?")
+				alert("입력한 정보를 확인하세요")
 			}
 		});
 	})

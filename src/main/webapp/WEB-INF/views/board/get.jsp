@@ -16,7 +16,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Daily Tennis</a>
+    <a class="navbar-brand" href="../../">Daily Tennis</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -65,7 +65,11 @@
     </div>
     <div class="form-group">
       <label for="exampleTextarea" class="form-label mt-4">게시판 내용</label>
-      <textarea name="content" class="form-control" id="exampleTextarea" rows="3" readonly="readonly"><c:out value="${pageInfo.content}"/></textarea>
+      <br><br><iframe id="iframeId" width="560" height="315" src="https://www.youtube.com/embed/${pageInfo.youtube }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>  
+      <br><br>
+      <div name="content" class="form-control" id="exampleTextarea" rows="3" readonly="readonly"><c:out value="${pageInfo.content}"/>
+      	
+      </div>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">게시판 작성자</label>

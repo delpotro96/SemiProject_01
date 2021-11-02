@@ -5,20 +5,34 @@ import java.util.Date;
 public class BoardVO {
 
 	private int bno;
-	private String title, content, writer;
+	private String title, content, writer, youtube;
 	private Date regdate;
 
 	
 	
 	
-	public BoardVO(int bno, String title, String content, String writer, Date regdate) {
+	public BoardVO(int bno, String title, String content, String writer, Date regdate, String youtube) {
 		super();
 		setBno(bno);
 		setTitle(title);
 		setContent(content);
 		setWriter(writer);
 		setRegdate(regdate);
-		
+		setYoutube(youtube);
+	}
+
+
+
+
+	public String getYoutube() {
+		return youtube;
+	}
+
+
+
+
+	public void setYoutube(String youtube) {
+		this.youtube = youtube;
 	}
 
 
@@ -54,7 +68,11 @@ public class BoardVO {
 
 
 	public void setTitle(String title) {
-		this.title = title;
+		if(title!=null&&!title.equals("")) {
+			this.title=title;
+		}else {
+			System.out.println("입력하신 정보를 확인하세요"); 
+		}
 	}
 
 
@@ -68,7 +86,11 @@ public class BoardVO {
 
 
 	public void setContent(String content) {
-		this.content = content;
+		if(content!=null&&!content.equals("")) {
+			this.content = content;
+			}else {
+				System.out.println("입력한 정보를 확인해주세요");
+			}
 	}
 
 
@@ -82,7 +104,11 @@ public class BoardVO {
 
 
 	public void setWriter(String writer) {
-		this.writer = writer;
+		if(writer!=null&&!writer.equals("")) {
+			this.writer=writer;
+		}else {
+			System.out.println("입력한 정보를 확인해주세요");
+		}
 	}
 
 

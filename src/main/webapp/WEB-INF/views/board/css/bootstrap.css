@@ -1907,7 +1907,7 @@ progress {
   --bs-table-hover-color: #7b8ab8;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   color: #7b8ab8;
   vertical-align: top;
   border-color: rgba(55, 94, 148, 0.1);
@@ -2156,6 +2156,7 @@ progress {
   border-radius: 0.25rem;
   box-shadow: inset 2px 2px 8px rgba(55, 94, 148, 0.3), inset -3px -2px 5px rgba(255, 255, 255, 0.8);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-left: 20px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -12191,3 +12192,6 @@ fieldset:disabled .btn {
 	margin-left: 500px;
 	margin-right: 50px;
 }
+
+
+

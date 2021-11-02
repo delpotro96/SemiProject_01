@@ -59,17 +59,20 @@
       <input name = "title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
     </div>
     <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">YouTube 주소</label>
+      <input name = "youtube" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="원할 시 Youtube Full URL 중 v= 뒤 코드만 입력해주세요">
+    </div>
+    <div class="form-group">
       <label for="exampleTextarea" class="form-label mt-4">textarea</label>
-      <textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea>
+      <textarea name="content" class="form-control" id="exampleTextarea" rows="3">
+      	
+      </textarea>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">writer</label>
       <input name="writer" type="text" class="form-control" id="exampleInputPassword1" placeholder="writer">
     </div>
-    <div class="form-group">
-      <label for="formFile" class="form-label mt-4">Default file input example</label>
-      <input class="form-control" type="file" id="formFile">
-    </div>
+ 
     <button class="btn btn-outline-primary">등록</button>
 </form>
 

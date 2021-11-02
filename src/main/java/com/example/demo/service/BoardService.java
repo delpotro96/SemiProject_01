@@ -37,4 +37,9 @@ public class BoardService implements BoardDAO{
 		return boardDAO.getListPaging(cri);
 	}
 
+	@Override
+	public int getTotal() {		
+		return boardDAO.getTotal();
+	}
+
 }
