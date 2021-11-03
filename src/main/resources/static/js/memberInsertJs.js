@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	$("#memberInsertBtn").click(function(){
-		alert();
-	})
+$(document).ready(function () {
+    $("#memberInsertBtn").click(function () {
+        alert();
+    })
 })

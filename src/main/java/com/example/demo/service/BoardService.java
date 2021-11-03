@@ -10,36 +10,36 @@ import com.example.demo.paging.Criteria;
 import com.example.demo.vo.BoardVO;
 
 @Service
-public class BoardService implements BoardDAO{
+public class BoardService implements BoardDAO {
 
-	@Autowired
-	private BoardDAO boardDAO;
-	
-	@Override
-	public void enroll(BoardVO boardVO) {
-		boardDAO.enroll(boardVO);
-		
-	}
+    @Autowired
+    private BoardDAO boardDAO;
 
-	@Override
-	public List<BoardVO> getList() {
-		return boardDAO.getList();
-	}
+    @Override
+    public void enroll(BoardVO boardVO) {
+        boardDAO.enroll(boardVO);
 
-	@Override
-	public BoardVO getPage(int bno) {
-		return boardDAO.getPage(bno);
-	}
+    }
 
-	@Override
-	public List<BoardVO> getListPaging(Criteria cri) {
-		// TODO Auto-generated method stub
-		return boardDAO.getListPaging(cri);
-	}
+    @Override
+    public List<BoardVO> getList() {
+        return boardDAO.getList();
+    }
 
-	@Override
-	public int getTotal() {		
-		return boardDAO.getTotal();
-	}
+    @Override
+    public BoardVO getPage(int bno) {
+        return boardDAO.getPage(bno);
+    }
+
+    @Override
+    public List<BoardVO> getListPaging(Criteria cri) {
+        // TODO Auto-generated method stub
+        return boardDAO.getListPaging(cri);
+    }
+
+    @Override
+    public int getTotal() {
+        return boardDAO.getTotal();
+    }
 
 }

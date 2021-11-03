@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.example.demo.dao.BoardDAO">
-	
-	 <!-- 게시판 등록 -->
-    <insert id="enroll" parameterType="boardVO">        
-        insert into board(title, content, writer, youtube) values (#{title}, #{content}, #{writer}, #{youtube})
+
+    <!-- 게시판 등록 -->
+    <insert id="enroll" parameterType="boardVO">
+        insert into board(title, content, writer, youtube)
+        values (#{title}, #{content}, #{writer}, #{youtube})
     </insert>
     <!--  게시판 목록 -->
-	<select id="getList" resultType="boardVO">
-		select * from board order by bno desc
-	</select>
-	<!-- 게시판 조회 -->
-	<select id="getPage" resultType="boardVO">
-		select * from board where bno = #{bno}
-	</select>
-	<!-- 페이징 게시판 목록 -->
-	<select id="getListPaging" resultType="BoardVO">
-    
-        SELECT *FROM board ORDER BY bno DESC LIMIT #{skip},#{amount}
-    
+    <select id="getList" resultType="boardVO">
+        select *
+        from board
+        order by bno desc
+    </select>
+    <!-- 게시판 조회 -->
+    <select id="getPage" resultType="boardVO">
+        select *
+        from board
+        where bno = #{bno}
+    </select>
+    <!-- 페이징 게시판 목록 -->
+    <select id="getListPaging" resultType="BoardVO">
+
+        SELECT *
+        FROM board
+        ORDER BY bno DESC
+        LIMIT #{skip},#{amount}
+
     </select>
     <select id="getTotal" resultType="int">
-    	select count(*) from board
+        select count(*)
+        from board
     </select>
 
 </mapper>

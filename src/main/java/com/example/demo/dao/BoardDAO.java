@@ -11,15 +11,15 @@ import com.example.demo.vo.BoardVO;
 @Repository
 @Mapper
 public interface BoardDAO {
-	
-	public void enroll(BoardVO boardVO);
-	
-	public List<BoardVO> getList();
-	
-	public BoardVO getPage(int bno);
-	
-	/* 페이징 게시판 목록 */
-	public List<BoardVO> getListPaging(Criteria cri);
 
-	public int getTotal();
+    void enroll(BoardVO boardVO);
+
+    List<BoardVO> getList();
+
+    BoardVO getPage(int bno);
+
+    /* 페이징 게시판 목록 */
+    List<BoardVO> getListPaging(Criteria cri);
+
+    int getTotal();
 }

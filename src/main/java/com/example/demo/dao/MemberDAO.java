@@ -11,12 +11,16 @@ import com.example.demo.vo.MemberVO;
 @Repository
 @Mapper
 public interface MemberDAO {
-	
-	public MemberVO login(MemberVO memberVO) throws DataAccessException;
-	public List<MemberVO> selectAllMember() throws DataAccessException;
-	public void insertMember(MemberVO memberVO) throws DataAccessException;
-	public void updateMemberPw(MemberVO memberVO) throws DataAccessException;
-	public void deleteMember(String id) throws DataAccessException;
+
+    MemberVO login(MemberVO memberVO) throws DataAccessException;
+
+    List<MemberVO> selectAllMember() throws DataAccessException;
+
+    void insertMember(MemberVO memberVO) throws DataAccessException;
+
+    void updateMemberPw(MemberVO memberVO) throws DataAccessException;
+
+    void deleteMember(String id) throws DataAccessException;
 }
 
 
